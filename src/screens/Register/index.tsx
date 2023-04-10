@@ -8,8 +8,9 @@ import {
 } from '../../components';
 import { colors } from "../../styles/colors";
 import { styles } from "./styles";
+import { LoginTypes } from "../../navigations/login.navigation"
 
-export function Register() {
+export function Register({navigation}:LoginTypes) {
 
     return(
         <View style={styles.container}>
@@ -58,7 +59,7 @@ export function Register() {
             </View>
 
             <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{console.log("Register")}}/>
-            <ComponentButtonInterface title="Back" type="secondary" onPressI={()=>{console.log("Back")}}/>
+            <ComponentButtonInterface title="Back" type="secondary" onPressI={()=>{navigation.navigate("Login")}}/>
 
         </View>
         
