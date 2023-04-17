@@ -45,7 +45,8 @@ export function Login({navigation}:LoginTypes) {
             </View>
 
             <ComponentButtonInterface title="Login" type="secondary" onPressI={()=>{console.log("Login")}}/>
-            <ComponentButtonInterface title="Back" type="secondary" onPressI={()=>{navigation.navigate("Register")}}/>
+            <Text style={styles.text}>Ainda não tem uma conta?</Text>
+            <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{navigation.navigate("Register")}}/>
         </View>
         
     );
