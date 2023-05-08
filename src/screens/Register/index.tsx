@@ -58,7 +58,7 @@ export function Register({navigation}:LoginTypes) {
                 </KeyboardAvoidingView>
             </View>
 
-            <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{console.log("Register")}}/>
+            <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{navigation.navigate("Drawer")}}/>
             <Text style={styles.text}>Já tem uma conta?</Text>
             <ComponentButtonInterface title="Login" type="secondary" onPressI={()=>{navigation.navigate("Login")}}/>
 
