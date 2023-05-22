@@ -3,9 +3,7 @@ import { View, TouchableOpacity, Text, KeyboardAvoidingView } from "react-native
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 import { IPage } from '../../../App';
-import {
-     ComponentTitleSlider, ComponentButtonSlider, ComponentButtonInterface
-} from '../../components';
+import { ComponentTitleSlider, ComponentButtonSlider, ComponentButtonInterface } from '../../components';
 import { colors } from "../../styles/colors";
 import { styles } from "./styles";
 import { LoginTypes } from "../../navigations/login.navigation"

@@ -1,8 +1,9 @@
 import React from 'react';
 import { DrawerNavigationProp, createDrawerNavigator } from '@react-navigation/drawer';
-import { ScreenPerfil, ScreenCamera } from "../screens";
+import { ScreenPerfil, ScreenCameraOptions } from "../screens";
 import { colors } from '../styles/colors';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { CameraNavigation } from './camera.navigation';
 type DrawerParamList = {
   Perfil: undefined;
   Camera: undefined;
@@ -31,7 +32,7 @@ export function DrawerNavigation() {
           )
         }}
       />
-      <Drawer.Screen name='Camera' component={ScreenCamera}
+      <Drawer.Screen name='Camera' component={CameraNavigation}
         options={{
           drawerIcon: () => (
             <AntDesign name='camera' size={24} color={colors.white}/>
