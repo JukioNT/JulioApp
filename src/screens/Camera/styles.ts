@@ -28,6 +28,6 @@ export const styles = StyleSheet.create({
     img: {
         width: Dimensions.get('window').width * 0.7,
         height: Dimensions.get('window').width * 0.7,
-    }
+    },
   });
   
