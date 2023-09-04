@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect,useState} from "react";
 import { View, TouchableOpacity, Text, KeyboardAvoidingView, Alert } from "react-native";
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
@@ -8,13 +8,23 @@ import { colors } from "../../styles/colors";
 import { styles } from "./styles";
 import { LoginTypes } from "../../navigations/login.navigation"
 import { useAuth } from "../../hooks/auth";
-import { IAuthenticate } from "../../services/data/User";
+import { IAuthenticate, IUserLogin } from "../../services/data/User";
+import { apiUser } from "../../services/data";
 import { AxiosError } from "axios";
+
+export interface IErrorApi{
+    errors: {
+        rule: string
+        field: string
+        message: string
+    }[]
+}
 
 export function Login({navigation}:LoginTypes) {
     const { signIn } = useAuth();
     const [data,setData] = useState<IAuthenticate>();
     const [isLoading, setIsLoading] = useState(true);
+    
     async function handleSignIn(){
         try{
             setIsLoading(true);
@@ -32,6 +42,16 @@ export function Login({navigation}:LoginTypes) {
         }
     }
 
+    function handleChange(item: IAuthenticate){
+        setData({...data, ...item})
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        },2000)
+    },[])
+
     return(
         <View style={styles.container}>
             <ComponentTitleSlider titleI="Login" />
@@ -45,6 +65,7 @@ export function Login({navigation}:LoginTypes) {
                         keyboardType="email-address"
                         autoCapitalize="none"
                         style={styles.boxText}
+                        onChangeText={(i) => handleChange({email: i})}
                         />
                     </View>
                 </KeyboardAvoidingView>
@@ -59,12 +80,13 @@ export function Login({navigation}:LoginTypes) {
                         secureTextEntry={true}
                         autoCapitalize="none"
                         style={styles.boxText}
+                        onChangeText={(i) => handleChange({password: i})}
                         />
                     </View>
                 </KeyboardAvoidingView>
             </View>
 
-            <ComponentButtonInterface title="Login" type="secondary" onPressI={()=>{navigation.navigate("Tab")}}/>
+            <ComponentButtonInterface title="Login" type="secondary" onPressI={handleSignIn}/>
             <Text style={styles.text}>Ainda não tem uma conta?</Text>
             <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{navigation.navigate("Register")}}/>
         </View>
