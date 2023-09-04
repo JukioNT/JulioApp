@@ -30,8 +30,7 @@ export function TabNavigation() {
     >
       <Tab.Screen name="Perfil" component={ScreenPerfil} 
         options={{
-          tabBarIcon: () => (<Ionicons name='person' color="black000000000
-          " size={24}/>)
+          tabBarIcon: () => (<Ionicons name='person' color="black" size={24}/>)
         }}
       
       />

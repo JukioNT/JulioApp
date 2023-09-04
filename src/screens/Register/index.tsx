@@ -42,6 +42,7 @@ export function Register({navigation}:LoginTypes) {
                 Alert.alert("Preencha todos os campos")
             }
         }catch(error){
+            setIsLoading(false)
             const err = error as AxiosError
             const errorData = err.response?.data as IErrorApi
             let message = ""
@@ -50,6 +51,7 @@ export function Register({navigation}:LoginTypes) {
                     message = `${message} ${iterator.message} \n`
                 }
             }
+            Alert.alert(message)
         }finally{
             setIsLoading(false)
         }
@@ -75,7 +77,6 @@ export function Register({navigation}:LoginTypes) {
                                 <TextInput 
                                 placeholder="Name"
                                 placeholderTextColor={colors.black}
-                                secureTextEntry={true}
                                 autoCapitalize="none"
                                 style={styles.boxText}
                                 onChangeText={(i) => handleChange({name: i})}
@@ -113,7 +114,7 @@ export function Register({navigation}:LoginTypes) {
                             </View>
                         </KeyboardAvoidingView>
                     </View>
-                    <ComponentButtonInterface title="Register" type="secondary" onPressI={()=>{handleRegister}}/>
+                    <ComponentButtonInterface title="Register" type="secondary" onPressI={handleRegister}/>
                     <Text style={styles.text}>Já tem uma conta?</Text>
                     <ComponentButtonInterface title="Login" type="secondary" onPressI={()=>{navigation.navigate("Login")}}/>
                 </View>
