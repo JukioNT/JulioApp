@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/auth"
 import { useEffect, useState } from "react";
 import { registerForPushNotificationsAsync } from "../../services/data/Push";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { colors } from "../../styles/colors";
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -16,12 +17,9 @@ Notifications.setNotificationHandler({
     }),
 });
 export function Perfil({navigation}:TabTypes){
+    const { signOut } = useAuth();
     const { user } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
-    function handleVoltar(){
-        const login = navigation.getParent()
-        login?.goBack();
-    }
     useEffect(() => {
         if(user) {
             setIsLoading(false);
@@ -41,9 +39,7 @@ export function Perfil({navigation}:TabTypes){
             ) : (
                 <View style={styles.container}>
                     <Text>Perfil</Text>
-                    <TouchableOpacity onPress={handleVoltar}>
-                        <Text>Voltar</Text>
-                    </TouchableOpacity>
+                    <ComponentButtonInterface title="Voltar" type="secondary" onPressI={signOut}/>
                 </View>
             )}
         </>

@@ -9,7 +9,6 @@ import { styles } from "./styles";
 import { LoginTypes } from "../../navigations/login.navigation"
 import { useAuth } from "../../hooks/auth";
 import { IAuthenticate, IUserLogin } from "../../services/data/User";
-import { apiUser } from "../../services/data";
 import { AxiosError } from "axios";
 
 export interface IErrorApi{
@@ -93,3 +92,4 @@ export function Login({navigation}:LoginTypes) {
         
     );
 }
+
